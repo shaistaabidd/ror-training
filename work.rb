@@ -8,6 +8,7 @@ puts range.to_a # => [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 puts (1..5).map {|n| n>2}
 
+
 value=10
 def output_value
 	value=20
