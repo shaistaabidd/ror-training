@@ -360,50 +360,39 @@
 #["word", "dowry", "yodel", "leader", "righteous", "serpent"] # valid!
 
 
-#class Shiritori
-#	@@words
-#	@@game_over
-#	def initialize
-#		@words=Array.new
-#		@game_over=false	
-#			
-#	end
-#	def play(word)
-#        	current_word = word.downcase.strip
-#        	if @words.length==0
-#            		add_word(current_word)
-#        	elsif((rule_one(current_word))==true && (rule_two(current_word))==false)
-#            		add_word(current_word)
-#        	else
-#        		game_over=true
-#            		return "Game Over!"
-#        	end
-#        end
-#        def rule_one(current_word)
-#        	lastWord = @words.last
-#        	return (lastWord[-1] == current_word[0])
-#            	
-#        end 
-#        def rule_two(current_word)
-#        	return @words.include?(current_word)     
-        
-#        end
-#    	def add_word(current_word)
-#        	@words.append(current_word)
-#        end
-#        def restart()
-#        	@words=[]
-#        	@game_over=false
-#        	return "Game restarted."
-#        end		       
-#end
-
-#my_shiritori = Shiritori.new()
-#my_shiritori.play("apple")
-#my_shiritori.play("ear")
-#puts my_shiritori.play("rhino")
-#puts my_shiritori.play("corn")
-#puts my_shiritori.restart()
+words=Array.new
+game_over=false
+def play(word)
+        current_word = word.downcase
+        if words.length==0
+            	add_word(current_word)
+        elsif((rule_one(current_word))==true && (rule_two(current_word))==false)
+           	add_word(current_word)
+        else
+        	game_over=true
+            	return "Game Over!"
+        end
+end
+def rule_one(current_word)
+        lastWord = words.last
+        return (lastWord[-1] == current_word[0])    	
+end 
+def rule_two(current_word)
+        return words.include?(current_word)     
+end
+def add_word(current_word)
+        words.append(current_word)
+end
+def restart()
+        words=[]
+        game_over=false
+        return "Game restarted."
+end		       
+play("apple")
+play("ear")
+play("rhino")
+play("corn")
+puts restart()
 
 
 
@@ -790,7 +779,7 @@
 #
 #	for c in string.split("")
 #
-#	morse += morseToDots[ c.upcase ].to_s + " "
+#		morse += morseToDots[ c.upcase ].to_s + " "
 #	end
 #	morse
 #end
