@@ -23,6 +23,7 @@ print string_pairs("Kanwal")
 
 
 
+
 #Problem 2: Create a function that alternates the case of the letters in a string (known as Spongecase).Examplesalternating_caps("Hello")    "HeLlO"➞alternating_caps("How are you?")    "HoW aRe YoU?"➞alternating_caps("OMG this website is awesome!")    "OmG tHiS wEbSiTe Is AwEsOmE!"➞NotesThe first letter should always be UPPERCASE.Ignore spaces.
 
 
