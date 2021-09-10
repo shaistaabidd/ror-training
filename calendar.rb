@@ -14,7 +14,7 @@ def calendar(year)
     calendar_hash = Hash.new
     calendar_hash[year] = Hash.new
     for i in 1..12
-        calendar_hash[year][Date.new(year,i).strftime('%b')]=all_days_in_month(year,i)
+        calendar_hash[year][(Date.new(year,i).strftime('%b')+' '+(Date.new(year,i).strftime('%y')))]=all_days_in_month(year,i)
     end
     calendar_hash
 end
