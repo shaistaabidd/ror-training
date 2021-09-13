@@ -2,11 +2,15 @@ require 'date'
 def calculate_num_of_days(month, year)
     Date.new(year, month, -1).day
 end
-def all_days_in_month(year,i)
+def get_day(year,month,day)
+    (Date.new(year,month,day).strftime('%a'))
+end
+
+def get_month(year,i)
     days= calculate_num_of_days(i,year)
     temp_hash=Hash.new
     for j in 1..days
-        temp_hash[j]=(Date.new(year,i,j).strftime('%a'))
+        temp_hash[j]=get_day(year,i,j)
     end
     temp_hash
 end
@@ -14,7 +18,7 @@ def calendar(year)
     calendar_hash = Hash.new
     calendar_hash[year] = Hash.new
     for i in 1..12
-        calendar_hash[year][(Date.new(year,i).strftime('%b')+' '+(Date.new(year,i).strftime('%y')))]=all_days_in_month(year,i)
+        calendar_hash[year][(Date.new(year,i).strftime('%b')+' '+(Date.new(year,i).strftime('%y')))]=get_month(year,i)
     end
     calendar_hash
 end
