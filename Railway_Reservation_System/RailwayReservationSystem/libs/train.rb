@@ -1,6 +1,16 @@
+require_relative '/home/shaista/Documents/ruby_project/Railway_Reservation_System/libs/train.rb'
+require_relative '/home/shaista/Documents/ruby_project/Railway_Reservation_System/libs/seats.rb'
 class Train
-    attr_accessor :train_name,:from,:to,:available_seats
-    
+    attr_accessor :train_name,:from,:to
+    def set_train_details
+        @@train_name=train_name
+        @@from=from
+        @@to=to
+    end
+    def assign_route(from,to)
+        @@from=from
+        @@to=to
+    end
     def add_train(name,from,to)
         if (name=='' || from=='' || to=='')
             puts "**Train Not Inserted**"
@@ -12,6 +22,8 @@ class Train
             end
             puts "**Train Added Successfully**"
         end
+        seat=Seats.new
+        seat.store_seats
     end
     def all_trains
         temp_arr=Array.new
@@ -29,6 +41,7 @@ class Train
     def add_routes(name,from,to)
         train=all_trains
         i=0
+        flag=true
         temp_arr=train
         train=temp_arr
         while i<train.length
@@ -38,12 +51,13 @@ class Train
                 new_route_name=name+"|"+from+"|"+to
                 old_route_name=train[i][0]
                 temp_arr[i][0]=new_route_name
-                puts "**Train Added Successfully**"
+                puts "**Route Added Successfully**"
+                flag=false
                 break
             end
             i=i+1
         end
-        if i==train.length
+        if i==train.length && flag==true
             puts "***No Such Train Exists***"
         end
         temp_arr
