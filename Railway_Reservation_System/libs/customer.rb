@@ -1,15 +1,16 @@
 class Customer
     attr_accessor :name,:phone,:cnic
-    def set_customer_details
-        @@name=name
-        @@phone=phone
-        @@cnic=cnic
+    def initialize(cust_name,cust_phone,cust_cnic)
+        @name = cust_name
+        @phone=cust_phone
+        @cnic =cust_cnic
+        store_customer_data
     end
-    def self.add_customer(name,phone,cnic)
+    def store_customer_data
         File.open("/home/shaista/Documents/ruby_project/Railway_Reservation_System/data/customer","a") do |file|
-            file.write ((name)+ " | ")
-            file.write ((phone)+ " | ")
-            file.write ((cnic)+ " \n")
+            file.write ((@name)+ " | ")
+            file.write ((@phone)+ " | ")
+            file.write ((@cnic)+ " \n")
         end
     end   
     def self.all_customers

@@ -23,4 +23,17 @@ module UserDetails
         end
         return data
     end
+    def validate_data(data)
+        flag=true
+        while flag==true
+            if data==""
+                puts "Invalid Input!!! "
+                puts "Enter Again : "
+                data=gets.chomp
+            else
+                flag=false
+            end
+        end
+        return data
+    end
 end
