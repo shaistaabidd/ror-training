@@ -9,7 +9,8 @@ module UserDetails
                 if numbers.include?(num)
                     is_num = true
                 else
-                    puts "Enter Correct Number"
+
+                    puts "Invalid Input. Enter Again: "
                     data=gets.chomp
                     is_num = false
                     break
