@@ -32,8 +32,12 @@ def alph_num(str)
         "Y"=>24,
         "Z"=>25
     }
-    str.split("").map{|i| alpha[i]}.join(" ")
+    for i in 0..str.length-1
+        print alpha[str[i]]
+        print " "
+    end
+    #str.split("").map{|i| alpha[i]}.join(" ")
 end
 
 
-print alph_num("JAVASCRIPT")
+alph_num("JAVASCRIPT")
