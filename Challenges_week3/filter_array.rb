@@ -5,6 +5,6 @@
 
 
 def filter_array(arr)
-    arr.select{|i| i.class==Integer} 
+    arr.select{|i| i.is_a?(Integer)} 
 end
-print filter_array(["Nothing", "here"])
+print filter_array([1, 2, 3, "a", "b", 4])
