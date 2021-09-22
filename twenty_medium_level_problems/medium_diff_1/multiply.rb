@@ -4,6 +4,7 @@
 #array.
 #Examples
 #multiply([4, 5])   [[4, 4], [5, 5]]
+
 def multiply(arr)
   temp_arr=[]
   arr.each do |c|
