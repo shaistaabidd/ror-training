@@ -18,15 +18,15 @@
 require 'date'
 def first_tuesday_of_the_month(year, month)
     hash_date={
-        "wednesday"=>1,
-        "thursday"=>2,
-        "friday"=>3,
-        "saturday"=>4,
-        "sunday"=>5,
-        "monday"=>6,
-        "tuesday"=>7
+        1=>"wednesday",
+        2=>"thursday",
+        3=>"friday",
+        4=>"saturday",
+        5=>"sunday",
+        6=>"monday",
+        7=>"tuesday"
     }
-    first_tues =((Date.new(year,month).strftime("%d")).to_i)+(7-hash_date[Date.new(year,month).strftime("%A").downcase])
+    first_tues =((Date.new(year,month).strftime("%d")).to_i)+(7-hash_date.key(Date.new(year,month).strftime("%A").downcase))
     return Date.new(year,month,first_tues)
 end
-print first_tuesday_of_the_month(2020, 3) 
+print first_tuesday_of_the_month(2020, 4) 
