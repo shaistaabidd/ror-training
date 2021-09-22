@@ -3,6 +3,7 @@ require_relative '/home/shaista/Documents/ruby_project/Railway_Reservation_Syste
 require_relative '/home/shaista/Documents/ruby_project/Railway_Reservation_System/libs/seats.rb'
 require_relative '/home/shaista/Documents/ruby_project/Railway_Reservation_System/modules/user_details_validation.rb'
 include UserDetails
+
 class Booking
   attr_accessor :name,:phone,:cnic
   def initialize(cust_name,cust_phone,cust_cnic)
