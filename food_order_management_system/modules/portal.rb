@@ -5,6 +5,7 @@ module Portal
     puts "  Press '2' for Kitchen Management  "
     puts "\n\n**************************"
   end
+  
   #def display_menu
   #  puts "\n\n*********MENU***********\n\n\n"
   #  puts "Coke : 120"
