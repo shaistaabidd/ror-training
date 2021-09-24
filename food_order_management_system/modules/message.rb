@@ -29,6 +29,15 @@ module Message
   end
   def display_messages
     msgs=get_data_from_file("/home/shaista/ruby_projects/ror-training/food_order_management_system/data/message")
-    msgs.sort
+    msgs.reverse
+  end
+  def get_arr_data_in_string(temp_status)
+    i=0
+    new_str=''
+    while i< temp_status.length
+      new_str=new_str+ temp_status[i][0] +"\n"
+      i=i+1
+    end
+    new_str
   end
 end
