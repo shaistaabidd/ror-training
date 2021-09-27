@@ -1,13 +1,11 @@
 #require_relative '/home/shaista/Documents/ruby_project/Railway_Reservation_System/libs/train.rb'
 #require_relative '/home/shaista/Documents/ruby_project/Railway_Reservation_System/libs/seats.rb'
-require_relative '/home/shaista/ruby_projects/ror-training/food_order_management_system/modules/message.rb'
 require_relative '/home/shaista/ruby_projects/ror-training/food_order_management_system/modules/validation.rb'
-include Message
 include Validation
 class Order
-  attr_accessor :order_id, :item, :price
+  attr_accessor :item, :price
   def initialize(item,price)
-    @order_id=rand(1..10000)
+    @order_id=rand(100)+1
     @item=item
     @price=price
     save_order
@@ -26,21 +24,16 @@ class Order
     temp_arr
   end
   def self.total_price
-    order=all_orders
-    i=0
+    order=get_all_orders
     total=0
-    while i< order.length
-      total=total+order[i][0][order[i][0].rindex('|')+1..order[i][0].length].to_i
-      i=i+1
+    order.each do |order_price|
+      total=total + order_price[0][order_price[0].rindex('|')+1..order_price[0].length].to_i
     end
     total
   end
   def self.display_history
-    puts get_arr_data_in_string(all_orders)
+    puts get_all_orders
     puts "Total Price : #{total_price}"
-  end
-  def self.employee_message
-    message("EMP")
   end
   def save_order
     File.open("/home/shaista/ruby_projects/ror-training/food_order_management_system/data/order","a") do |file|
@@ -50,11 +43,11 @@ class Order
     end
     puts "**Order Added Successfully**"
   end
-  def self.all_orders
+  def self.get_all_orders
     file_path="/home/shaista/ruby_projects/ror-training/food_order_management_system/data/order"
     get_data_from_file(file_path)
   end
-  def self.all_orders_status
+  def self.get_all_orders_status
     file_path="/home/shaista/ruby_projects/ror-training/food_order_management_system/data/order_status"
     get_data_from_file(file_path)
   end

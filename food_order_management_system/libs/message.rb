@@ -1,16 +1,23 @@
+require_relative '/home/shaista/ruby_projects/ror-training/food_order_management_system/libs/order.rb'
+require_relative '/home/shaista/ruby_projects/ror-training/food_order_management_system/modules/validation.rb'
 require 'date'
-module Message
-  def message(name)
-    puts "Enter Message : "
-    message=gets.chomp
-    date=DateTime.now.strftime "%b %d,%Y "
-    #print date.class
-    str='[[ '+ name +'] : ' + date +']  ' + message
-    store_message(str)
+class Message
+  attr_accessor :message
+  def initialize(message)
+    @message=message
+    store_message
   end
-  def store_message(str)
+  #def message(name)
+  #  puts "Enter Message : "
+  #  message=gets.chomp
+  #  date=DateTime.now.strftime "%b %d,%Y "
+    #print date.class
+  #  str='[[ '+ name +'] : ' + date +']  ' + message
+  #  store_message(str)
+  #end
+  def store_message
     File.open("/home/shaista/ruby_projects/ror-training/food_order_management_system/data/message","a") do |file|
-      file.write ((str)+ "\n")
+      file.write ((@message)+ "\n")
     end
     puts "**Message Added Successfully**"
   end
@@ -30,14 +37,5 @@ module Message
   def display_messages
     msgs=get_data_from_file("/home/shaista/ruby_projects/ror-training/food_order_management_system/data/message")
     msgs.reverse
-  end
-  def get_arr_data_in_string(temp_status)
-    i=0
-    new_str=''
-    while i< temp_status.length
-      new_str=new_str+ temp_status[i][0] +"\n"
-      i=i+1
-    end
-    new_str
   end
 end
