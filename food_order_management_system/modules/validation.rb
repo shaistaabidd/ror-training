@@ -23,6 +23,7 @@ module Validation
       end
       return data
   end
+  
   def validate_data(data)
       flag=true
       while flag
