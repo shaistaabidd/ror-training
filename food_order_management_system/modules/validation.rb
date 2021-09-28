@@ -24,17 +24,5 @@ module Validation
       return data
   end
   
-  def validate_data(data)
-      flag=true
-      while flag
-          if data==""
-            puts "Invalid Input!!! "
-            puts "Enter Again : "
-            data=gets.chomp
-          else
-            flag=false
-          end
-      end
-      return data
-  end
+  
 end

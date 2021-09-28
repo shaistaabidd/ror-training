@@ -1,6 +1,6 @@
 module Portal
   def display_portal
-    puts "\n\n*********PORTAL***********\n\n\n"
+    puts "\n\n*********Welcome to FOOD ORDER MANAGEMENT SYSTEM***********\n\n\n"
     puts "  Press '1' for Employee  "
     puts "  Press '2' for Kitchen Management  "
     puts "  Press any key -> to exit  "

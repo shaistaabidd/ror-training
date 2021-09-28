@@ -4,7 +4,6 @@ class Customer
     @name=name
     @cnic=cnic
     @phone=phone
-    save_customer
   end
   def save_customer
     File.open("/home/shaista/ruby_projects/ror-training/food_order_management_system/data/customer","a") do |file|
