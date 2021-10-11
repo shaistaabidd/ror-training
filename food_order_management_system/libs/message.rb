@@ -1,16 +1,23 @@
 require 'date'
 class Message
+  
   attr_accessor :message
+  
   def initialize(message)
     @message=message
   end
+  
   def store_message
-    File.open("/home/shaista/ruby_projects/ror-training/food_order_management_system/data/message","a") do |file|
+    
+    File.open("data/message","a") do |file|
       file.write ((@message)+ "\n")
     end
+    
     puts "**Message Added Successfully**"
   end
+  
   def retrieve_messages_from_file(file_path)
+    
     temp_arr=Array.new
     count=0
     arr=Array.new
@@ -22,9 +29,14 @@ class Message
       count=count+1
     end
     temp_arr
+  
   end
+  
   def display_messages
-    msgs=retrieve_messages_from_file("/home/shaista/ruby_projects/ror-training/food_order_management_system/data/message")
+    
+    msgs=retrieve_messages_from_file("data/message")
     msgs.reverse
+  
   end
+
 end

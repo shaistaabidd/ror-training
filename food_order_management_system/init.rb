@@ -4,13 +4,14 @@ require_relative 'libs/order.rb'
 require_relative 'libs/customer.rb'
 require_relative 'modules/portal.rb'
 require_relative 'modules/validation.rb'
-require 'io/console'
+
+#require 'io/console'
 require 'date'
 include Portal
 include Validation
 
 menu_hash = Hash["Biryani" => 237, "Qorma" => 638, "Raita" => 30 ,"Salad" => 25]
-#status_hash = Hash["N" => "New", "P" => "Prepare","R" => "Ready","D" => "Delay"]
+
 def validate_input(data)
   flag=true
   while flag && data==""
@@ -20,6 +21,8 @@ def validate_input(data)
   end
   return data
 end
+
+
 def user_name_password
   puts "Enter Username : "
   uname=gets.chomp
@@ -29,22 +32,24 @@ def user_name_password
   pwd=validate_input(pwd)
 end
 
-
-
 def customer_details
   puts "Enter Customer Name : "
   name=gets.chomp
   name=validate_input(name)
+
   puts "Enter Customer CNIC : "
   cnic=gets.chomp
   cnic=validate_input(cnic)
   cnic=criteria(cnic)
+
   puts "Enter Phone Number : "
   phone=gets.chomp
   phone=validate_input(phone)
   phone=criteria(phone)
+
   return name,cnic,phone
 end
+
 
 def message_format(portal_name)
   puts "Enter Message : "
@@ -53,6 +58,7 @@ def message_format(portal_name)
   date=DateTime.now.strftime "%b %d,%Y "
   str='[['+ portal_name+ ' ] : ' + date +']  ' + message
 end
+
 
 def display_menu
   puts "***********Menu***********"
@@ -80,6 +86,7 @@ if user_input.to_i==1
 
   flag=true
   while flag
+    
     display_employee_dashboard
     user_response=gets.chomp
 
@@ -89,11 +96,13 @@ if user_input.to_i==1
       display_menu
       puts "Select item from Menu: "
       item=gets.chomp
+
       item=validate_input(item)
       while !menu_hash.key?item.capitalize
         puts "Select item from Menu: "
         item=gets.chomp
       end
+
       price=menu_hash[item.capitalize].to_s
 
 
@@ -107,6 +116,7 @@ if user_input.to_i==1
 
       orders=Order.get_all_orders
       puts orders
+      
       puts "Enter Order id for which you wanna Check Order Status"
       order_id=gets.chomp
       order_id=validate_input(order_id)
@@ -123,44 +133,59 @@ if user_input.to_i==1
       message.store_message
 
     elsif user_response.to_i==4
+      
       Order.display_history
+    
     else
-      exit
+      exit    
     end
+  
   end
+
 elsif user_input.to_i==2
+  
   puts "Please Enter Login Credentials!! "
   user_name_password
   puts "\nLogin Successfull!!!"
+  
   flag=true
   while flag
     display_kitchen_management_dashboard
     user_response=gets.chomp
   
     if user_response.to_i==1
+      
       orders=Order.get_all_orders
       puts orders
+      
       puts "Enter Order id for which you wanna Update Order Status"
       order_id=gets.chomp
-      #puts Order.order_id
       order_id=validate_input(order_id)
       order_id=criteria(order_id)
       index=Order.is_exist(order_id)
+      
       if index!=-1
+        
         status_portal
         status=gets.chomp
+        
         while status.upcase!='N' && status.upcase!='P' && status.upcase!='R' && status.upcase!='D'
           puts "Invalid Status. Enter Status Again"
           status=gets.chomp
         end
+        
         KitchenManagement.status_update(order_id,status,index)
       else
         puts "No Such Order Exists!!!"
       end
+    
+    
     elsif user_response.to_i==2
+      
       str=message_format("KM")
       message=Message.new(str)
       message.store_message
+    
     else
       #flag=false
       exit
