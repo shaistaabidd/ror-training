@@ -1,15 +1,17 @@
 require 'date'
 class Message
   
-  attr_accessor :message
+  attr_accessor :message,:order
   
-  def initialize(message)
+  def initialize(message,order)
     @message=message
+    @order=order
   end
   
   def store_message
     
     File.open("data/message","a") do |file|
+      file.write ((@order))
       file.write ((@message)+ "\n")
     end
     
