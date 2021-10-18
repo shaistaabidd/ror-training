@@ -95,7 +95,7 @@ class Order
     end
   end
 
-  def self.display_receipt(cust_details)
+  def display_receipt(cust_details)
     puts "\n\n\n**************************"
     puts "*******Receipt********\n"
     puts "\n***Order Details Are***"

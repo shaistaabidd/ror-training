@@ -133,8 +133,8 @@ if user_input.to_i==1
     elsif user_response.to_i==2
       
 
-      #orders=Order.get_all_orders
-      #puts orders
+      orders=Order.get_all_orders
+      puts orders
       
       puts "Enter Order id for which you wanna Check Order Status"
       order_id=gets.chomp
